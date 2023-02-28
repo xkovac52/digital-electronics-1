@@ -1,4 +1,4 @@
-# Lab 4: INSERT_YOUR_FIRSTNAME INSERT_YOUR_LASTNAME
+# Lab 4: Dávid Kováč
 
 ### LED(7:4) indicators
 Complete the decoder truth table for **common anode** 7-segment display.
