@@ -46,22 +46,28 @@ Complete the decoder truth table for **common anode** 7-segment display.
 2. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
    ```vhdl
-   --------------------------------------------------------------------
-   -- Experiments on your own: LED(7:4) indicators
-
-   -- Turn LED(4) on if input value is equal to 0, ie "0000"
-   -- LED(4) <= WRITE YOUR CODE HERE
-
-   -- Turn LED(5) on if input value is greater than "1001", ie 10, 11, 12, ...
-   -- LED(5) <= WRITE YOUR CODE HERE
-
-   -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
-   -- LED(6) <= WRITE YOUR CODE HERE
-
-   -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
-   -- LED(7) <= WRITE YOUR CODE HERE
+   with SW select          --0 to 3--
+    LED(7 downto 4) <=  "0001" when "0000", --1
+                        "1100" when "0001", --12/C
+                        "1000" when "0010",	--8
+                        "0100" when "0011",	--4
+                        --4 to 7--
+                        "1000" when "0100",	--8
+                        "0100" when "0101",	--4
+                        "0000" when "0110",	--0
+                        "0100" when "0111",	--4
+                        --8 to 11
+                        "1000" when "1000",	--8
+                        "0100" when "1001",	--4
+                        "0010" when "1010",	--2
+                        "0110" when "1011",	--6
+                        --12 to 15
+                        "0010" when "1100",	--2
+                        "0110" when "1101",	--6
+                        "0010" when "1110",	--2
+                        "0110" when others;	--6
    ```
 
 3. Screenshot with simulated time waveforms for LED(7:4). Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-   ![your figure]()
+   ![your figure](Images/waveform.png)
