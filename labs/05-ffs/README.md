@@ -64,7 +64,7 @@ begin
         if rising_edge(clk) then
             if (rst = '1') then
                 sig_q <= '0';
-				else
+	    else
                 if (J = '0' and K = '0') then
                     sig_q <= sig_q;
                 elsif (J = '0' and K = '1') then
@@ -72,7 +72,7 @@ begin
                 elsif (J = '1' and K = '0') then
                     sig_q <= '1';
                 else
-                	sig_q <= not sig_q;
+               	    sig_q <= not sig_q;
                 end if;
              end if;
         end if;
