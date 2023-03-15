@@ -61,10 +61,10 @@ T_{clk}=\frac{1}{f_{clk}}=
 
 2. Screenshot with simulated time waveforms. Test: (a) reset, (b) counter direction, (c) enable. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale! ***Editors Note: The unedited waveform capture can be viewed in the Images folder under Capture.PNG***
 
-   ![your figure](Image/waveforms.png)
+   ![your figure](Images/waveforms.png)
 
 ### Two counters
 
 1. Image of the top layer structure including both counters, ie a 4-bit bidirectional counter from *Part 4* and a 12-bit counter with a 10 ms time base from *Experiments on your own*. The image can be drawn on a computer or by hand. Always name all inputs, outputs, components and internal signals!
 
-   ![your figure](Image/Double_Counter.png)
+   ![your figure](Images/Double_Counter.png)
