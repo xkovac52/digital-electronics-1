@@ -32,46 +32,59 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity input is
-Port ( 
-    rst         :   in    std_logic;
-    dot         :   in    std_logic;
-    dash        :   in    std_logic;
-    send        :   in    std_logic;
-    letter      :   out std_logic_vector(9 downto 0)
+Port (
+    clk         :   in      std_logic;
+    rst         :   in      std_logic;
+    dot         :   in      std_logic;
+    dash        :   in      std_logic;
+    letter      :   out     std_logic_vector(9 downto 0)
 );
-
 end input;
 
 architecture Behavioral of input is
 
-signal sig_let  : std_logic_vector(9 downto 0);
-signal c        : integer := 0;
+signal sig_let      : std_logic_vector(9 downto 0) := "0000000000";
+signal c            : integer := 0;
+signal sig_en_4ms   : std_logic;
 
 begin
-    P_reader : process is
+
+clk_en0 : entity work.clock_enable
+    generic map (
+      -- FOR SIMULATION, KEEP THIS VALUE TO 4
+      -- FOR IMPLEMENTATION, CHANGE THIS VALUE TO 400,000
+      -- 4      @ 4 ns
+      -- 400000 @ 4 ms
+      g_MAX => 4
+    )
+    port map (
+      clk => clk,
+      rst => rst,
+      ce  => sig_en_4ms
+    );
+
+    P_reader : process (clk) is
     begin
-    toBits(9)<= '0'; --Zjednoduši? a odstarni? case when
-    toBits(8)<= '1';
-		if(c > 4) then
-			c = 0;
-			sig_let <= "0000000000";
-		end if;
-        if(dot = '1') then
-			sig_let(9-c) <= '0';
-			sig_let(9-c-1) <= '1';
-			c<= c+2;
-        end if;
-        if(dash = '1') then
-			sig_let(9-c) <= '1';
-			sig_let(9-c-1) <= '1';
-			c<= c+2;
-        end if;
-        if(rst = '1') then
-			sig_let <= "0000000000";
-			c<= 0;
-        end if;
-        if(send = '1') then
-			letter <= sig_let;
-        end if;    
-  end process P_reader;
-end Behavioral;
+    if (rising_edge(clk)) then
+            if(rst = '1' or c >8) then
+                if(c > 8) then
+                letter <= sig_let;
+                end if;
+			     sig_let <= "0000000000";
+			     c<= 0;
+            else            
+                  if(dot = '1' and dash = '0') then
+			         sig_let(9-c) <= '0';
+			         sig_let(9-c-1) <= '1';
+			         c<= c+2;
+                  elsif(dot = '0' and dash = '1') then
+			         sig_let(9-c) <= '1';
+			         sig_let(9-c-1) <= '1';
+			         c<= c+2;
+                   else
+			         c<= 9;
+			         end if;   
+            end if;   
+     end if;       
+    end process P_reader;
+end architecture behavioral;
