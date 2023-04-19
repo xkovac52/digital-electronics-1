@@ -56,7 +56,7 @@ clk_en0 : entity work.clock_enable
       -- FOR IMPLEMENTATION, CHANGE THIS VALUE TO 400,000
       -- 4      @ 4 ns
       -- 400000 @ 4 ms
-      g_MAX => 4
+      g_MAX => 100000000
     )
     port map (
       clk => clk,
@@ -67,10 +67,13 @@ clk_en0 : entity work.clock_enable
     P_reader : process (clk) is
     begin
     if (rising_edge(clk)) then
-            if(rst = '1' or c >8) then
-                if(c > 8 or no_sig > 9) then
-                letter <= sig_let;
-                end if;
+            if(rst = '1') then                     
+			     sig_let <= "0000000000";
+			     letter <= sig_let; 
+			     c<= 0;
+				 no_sig<= 0;
+             elsif(c > 8 or no_sig > 9) then
+                 letter <= sig_let;   
 			     sig_let <= "0000000000";
 			     c<= 0;
 				 no_sig<= 0;
