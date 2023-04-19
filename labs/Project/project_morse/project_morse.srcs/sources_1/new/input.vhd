@@ -45,6 +45,7 @@ architecture Behavioral of input is
 
 signal sig_let      : std_logic_vector(9 downto 0) := "0000000000";
 signal c            : integer := 0;
+signal no_sig       : integer := 0;
 signal sig_en_4ms   : std_logic;
 
 begin
@@ -67,22 +68,25 @@ clk_en0 : entity work.clock_enable
     begin
     if (rising_edge(clk)) then
             if(rst = '1' or c >8) then
-                if(c > 8) then
+                if(c > 8 or no_sig > 9) then
                 letter <= sig_let;
                 end if;
 			     sig_let <= "0000000000";
 			     c<= 0;
+				 no_sig<= 0;
             else            
                   if(dot = '1' and dash = '0') then
 			         sig_let(9-c) <= '0';
 			         sig_let(9-c-1) <= '1';
 			         c<= c+2;
+					 no_sig<= 0;
                   elsif(dot = '0' and dash = '1') then
 			         sig_let(9-c) <= '1';
 			         sig_let(9-c-1) <= '1';
 			         c<= c+2;
+					 no_sig<= 0;
                    else
-			         c<= 9;
+			         no_sig<= no_sig+1;
 			         end if;   
             end if;   
      end if;       
