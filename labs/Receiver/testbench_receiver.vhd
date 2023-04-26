@@ -30,29 +30,27 @@ library ieee;
 -- library UNISIM;
 -- use UNISIM.VComponents.all;
 
-entity tb_input is
+entity testbench_receiver is
 --  Port ( );
-end entity tb_input;
+end entity testbench_receiver;
 
-architecture behavioral of tb_input is
+architecture behavioral of testbench_receiver is
 
   constant c_clk_100mhz_period : time := 10 ns;
 
   signal sig_clk_100mhz : std_logic;
   signal s_rst          : std_logic;
-  signal s_dot          : std_logic;
-  signal s_dash         : std_logic;
-  signal s_letter       : std_logic_vector(9 downto 0);
+  signal s_in           : std_logic;
+  signal s_out          : std_logic_vector(9 downto 0);
 
 begin
 
-  uut_input : entity work.input
+  uut_receiver : entity work.receiver
     port map (
       clk    => sig_clk_100mhz,
       rst    => s_rst,
-      dot    => s_dot,
-      dash   => s_dash,
-      letter => s_letter
+      input  => s_in,
+      output => s_out
     );
 
   p_clk_gen : process is
@@ -74,31 +72,30 @@ begin
   p_input_gen : process is
   begin
 
-    s_dot  <= '1';
-    s_dash <= '0';
+    s_in <= '0';
     wait for 10 ns;
-    s_dot  <= '0';
-    s_dash <= '1';
+    s_in <= '1';
     wait for 10 ns;
-    s_dot  <= '1';
-    s_dash <= '0';
+    s_in <= '0';
     wait for 10 ns;
-    s_dot  <= '0';
-    s_dash <= '1';
+    s_in <= '1';
+    wait for 30 ns;
+    s_in <= '0';
     wait for 10 ns;
-    s_dot  <= '0';
-    s_dash <= '1';
+    s_in <= '1';
     wait for 10 ns;
-    s_dot  <= '1';
-    s_dash <= '0';
-    wait for 20 ns;
-    s_dot  <= '0';
-    s_dash <= '1';
+    s_in <= '0';
     wait for 10 ns;
-    s_dot  <= '0';
-    s_dash <= '0';
+    s_in <= '1';
+    wait for 30 ns;
+    s_in <= '0';
+    wait for 10 ns;
+    s_in <= '1';
+    wait for 30 ns;
+    s_in <= '0';
     wait;
 
   end process p_input_gen;
 
 end architecture behavioral;
+
