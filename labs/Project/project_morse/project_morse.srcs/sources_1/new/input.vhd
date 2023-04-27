@@ -55,11 +55,7 @@ begin
       -- FOR IMPLEMENTATION, CHANGE THIS VALUE TO 400,000
       -- 4      @ 4 ns
       -- 400000 @ 4 ms
-<<<<<<< HEAD
       g_max => 4
-=======
-      g_MAX => 100000000
->>>>>>> 7850a76d6a445beecc024251ad52b2ea705117ef
     )
     port map (
       clk => clk,
@@ -71,7 +67,6 @@ begin
   begin
 
     if (rising_edge(clk)) then
-<<<<<<< HEAD
       if (rst = '1') then
         sig_let <= "0000000000";
         letter  <= sig_let;
@@ -102,33 +97,3 @@ begin
   end process p_reader;
 
 end architecture behavioral;
-=======
-            if(rst = '1') then                     
-			     sig_let <= "0000000000";
-			     letter <= sig_let; 
-			     c<= 0;
-				 no_sig<= 0;
-             elsif(c > 8 or no_sig > 9) then
-                 letter <= sig_let;   
-			     sig_let <= "0000000000";
-			     c<= 0;
-				 no_sig<= 0;
-            else            
-                  if(dot = '1' and dash = '0') then
-			         sig_let(9-c) <= '0';
-			         sig_let(9-c-1) <= '1';
-			         c<= c+2;
-					 no_sig<= 0;
-                  elsif(dot = '0' and dash = '1') then
-			         sig_let(9-c) <= '1';
-			         sig_let(9-c-1) <= '1';
-			         c<= c+2;
-					 no_sig<= 0;
-                   else
-			         no_sig<= no_sig+1;
-			         end if;   
-            end if;   
-     end if;       
-    end process P_reader;
-end architecture behavioral;
->>>>>>> 7850a76d6a445beecc024251ad52b2ea705117ef
