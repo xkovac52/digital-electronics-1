@@ -41,6 +41,7 @@ architecture behavioral of testbench_receiver is
   signal sig_clk_100mhz : std_logic;
   signal s_rst          : std_logic;
   signal s_in           : std_logic;
+  signal s_en           : std_logic;
   signal s_out          : std_logic_vector(9 downto 0);
 
 begin
@@ -49,6 +50,7 @@ begin
     port map (
       clk    => sig_clk_100mhz,
       rst    => s_rst,
+      en     => s_en,
       input  => s_in,
       output => s_out
     );
