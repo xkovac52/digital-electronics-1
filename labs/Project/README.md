@@ -44,10 +44,10 @@ The input port for the receiver is the first JB port and the output of the recei
 [comment]: <> (Write descriptive text and simulation screenshots of your components.)
 
 * **Input** - Generates a 10bit output where dot is represented as "01", dash as "11" and unkown as "00". Output is sent out after 5 button presses or no input is given after a few clock inputs. 
-![your figure](Images/Input.png)
+![your figure](Images/input.png)
 * **Generator** - takes the 10bit output signal from **Input** and converts it into a 1bit wave where the lenght of the high level depends on if it was a dot ("01") or dash "11". The 10bit signal is read from left to right by 2bits.
 * **Receiver** - reads the 1bit output from the **Generator** and thanks to a left shift reader, reads the last 3 wave levels received. If the last 3 levels were "010" the receiver writes "01" into 2 bits of its 10 bit output signal, if it was "111" it writes "11". The ouput is sent if either 5 symbols are recived or if the reader receives "000". 
-![your figure](Images/Receiver.png)
+![your figure](Images/receiver.png)
 * **Translator** - Takes the 10bit output from the **Receiver** and translates it into a letter/number to be displayed on a 7 segment display.
 
 ## Instructions
