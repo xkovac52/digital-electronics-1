@@ -2,7 +2,7 @@
 
 ### Team members
 
-* Čipl Jan 		|240600| (responsible for writing top.vhd files, modifying hex7seg files)
+* Čipl Jan 		  |240600| (responsible for writing top.vhd files, modifying hex7seg files)
 * Kováč Dávid 	|214079| (responsible for writing Input and Receiver code)
 * Mucha Vojtěch |240956| (responsible for writing the Generator code)
 
@@ -60,5 +60,6 @@ The input port for the receiver is the first JB port and the output of the recei
 
 ## References
 
-1. Put here the literature references you used.
-2. ...
+1. [Our past Lab experiments](https://github.com/tomas-fryza/digital-electronics-1/tree/master/labs)
+2. [Morse code info](https://roboblocky.com/u/733.php)
+3. [The Alphabet on a 7 segment display](https://fakoo.de/en/siekoo/siekoo-alphabet.gif)
