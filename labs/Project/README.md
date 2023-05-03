@@ -39,6 +39,8 @@ The input port for the receiver is the first JB port and the output of the recei
 * **Translator** - [SRC](https://github.com/JanCipl/digital-electronics-1/blob/main/04-segment/display/display.srcs/sources_1/new/hex_7seg.vhd) [SIM](https://github.com/JanCipl/digital-electronics-1/blob/main/09-project/final_project/final_project.srcs/sim_1/new/testbench_hex.vhd)
 * **TOP Transmitter** - [SRC](https://github.com/JanCipl/digital-electronics-1/blob/main/09-project/final_project/final_project.srcs/sources_1/new/topHEX_7seg.vhd)
 * **TOP Receiver** - [SRC](https://github.com/JanCipl/digital-electronics-1/blob/main/09B-project/project_decoder/project_decoder.src/sources_1/new/topHEX_7seg.vhd)
+* **Vivado project for Transmitter** - [Project](https://github.com/JanCipl/digital-electronics-1/tree/main/09-project)
+* **Vivado project for Receiver** - [Project](https://github.com/JanCipl/digital-electronics-1/tree/main/09B-project/project_decoder)
 ### Component(s) simulation
 
 [comment]: <> (Write descriptive text and simulation screenshots of your components.)
